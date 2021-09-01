@@ -3,6 +3,7 @@ package gui;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -20,6 +21,9 @@ public class SimplePresentationScreen extends JFrame {
 
 	public SimplePresentationScreen(Student studentData) {
 		this.studentData = studentData;
+		
+		// Icono
+		this.setIconImage(new ImageIcon(getClass().getResource("/images/tdp.png")).getImage());
 		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
