@@ -3,6 +3,7 @@ package gui;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -18,7 +19,9 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.Icon;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import java.awt.FlowLayout;
 
 @SuppressWarnings("serial")
 public class SimplePresentationScreen extends JFrame {
@@ -34,6 +37,7 @@ public class SimplePresentationScreen extends JFrame {
 	private JTextField textFieldEmail;
 	private JTextField textFieldGithubURL;
 	private JLabel jLabelEjecucion;
+	private JLabel jLabelImagen;
 
 	public SimplePresentationScreen(Student studentData) {
 		this.studentData = studentData;
@@ -100,6 +104,7 @@ public class SimplePresentationScreen extends JFrame {
 		textFieldGithubURL = new JTextField();
 		textFieldGithubURL.setColumns(10);
 		textFieldGithubURL.setText(studentData.getGithubURL());
+		
 		
 		
 		GroupLayout gl_tabInformation = new GroupLayout(tabInformation);
@@ -171,8 +176,21 @@ public class SimplePresentationScreen extends JFrame {
 		
 		contentPane.add(jLabelEjecucion, BorderLayout.SOUTH);
 		
-		JPanel jPanelImagen = new JPanel();
-		contentPane.add(jPanelImagen, BorderLayout.EAST);
+		// Imagen
+		jLabelImagen = new JLabel("");
+		jLabelImagen.setHorizontalAlignment(SwingConstants.CENTER);
+		contentPane.add(jLabelImagen, BorderLayout.EAST);
+		
+		jLabelImagen.setBounds(0, 0, 153, 105);
+		
+		ImageIcon imageIcon = new
+				ImageIcon(getClass().getResource(studentData.getPathPhoto()));
+		Image imageEscalada = imageIcon.getImage().getScaledInstance(jLabelImagen.getWidth(),
+				jLabelImagen.getHeight(), Image.SCALE_SMOOTH);
+		
+		Icon icono = new ImageIcon(imageEscalada);
+		
+		jLabelImagen.setIcon(icono);
 		
 	}
 }
